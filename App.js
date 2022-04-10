@@ -7,9 +7,11 @@ import {
   NativeEventEmitter,
 } from 'react-native';
 import React, {useEffect} from 'react';
-const {CalendarModule} = NativeModules;
-CalendarModule.createCalendarEvent('ankit', 'hsp');
-CalendarModule.getDataFromCallback(data => console.log(data));
+const CalendarModule = NativeModules?.CalendarModule;
+console.log(NativeModules, 'there');
+CalendarModule?.createCalendarEvent('ankit', 'hsp');
+CalendarModule?.getDataFromCallback(data => console.log(data));
+console.log(CalendarModule.getConstants(), 'constants');
 const eventEmitter = new NativeEventEmitter(CalendarModule);
 const resolveCalendarPromise = async () => {
   try {
