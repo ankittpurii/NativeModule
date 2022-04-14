@@ -7,6 +7,7 @@ import {
   NativeEventEmitter,
 } from 'react-native';
 import React, {useEffect} from 'react';
+import CustomButton from './src/Components/CustomButton';
 const CalendarModule = NativeModules?.CalendarModule;
 console.log(NativeModules, 'there');
 CalendarModule?.createCalendarEvent('ankit', 'hsp');
@@ -22,19 +23,14 @@ const resolveCalendarPromise = async () => {
   }
 };
 const App = () => {
-  useEffect(() => {
-    eventEmitter.addListener('EventCount', data =>
-      console.log('listener', data),
-    );
-    return () => {
-      eventEmitter.removeAllListeners();
-    };
-  }, []);
-
+  const onButtonClick = () => {
+    alert('Clicked');
+  };
   return (
     <SafeAreaView style={styles.container}>
       <Text>App</Text>
       <Button title="Calendar promise" onPress={resolveCalendarPromise} />
+      <CustomButton title={'Test Button'} onPress={onButtonClick} />
     </SafeAreaView>
   );
 };
