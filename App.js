@@ -7,6 +7,7 @@ import {
   NativeEventEmitter,
 } from 'react-native';
 import React, {useEffect} from 'react';
+import CodePush from 'react-native-code-push';
 import CustomButton from './src/Components/CustomButton';
 const CalendarModule = NativeModules?.CalendarModule;
 console.log(NativeModules, 'there');
@@ -22,18 +23,28 @@ const resolveCalendarPromise = async () => {
     console.log(error);
   }
 };
-const App = () => {
+var App = () => {
   const onButtonClick = () => {
     alert('Clicked');
   };
   return (
     <SafeAreaView style={styles.container}>
-      <Text>App</Text>
+      <Text>Hello</Text>
       <Button title="Calendar promise" onPress={resolveCalendarPromise} />
-      <CustomButton title={'Test Button'} onPress={onButtonClick} />
+      <CustomButton
+        journeyItem={{
+          journeyId: '1',
+          destination: 'hsp',
+          journeyType: 'my way',
+        }}
+        title={'Test Button'}
+        onPress={onButtonClick}
+      />
     </SafeAreaView>
   );
 };
+const codeOptions = {checkFrequency: CodePush.CheckFrequency.ON_APP_START};
+App = CodePush(codeOptions)(App);
 
 export default App;
 

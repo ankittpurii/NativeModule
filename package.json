@@ -10,9 +10,11 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "appcenter-cli": "^2.10.10",
     "prop-types": "^15.8.1",
     "react": "17.0.2",
-    "react-native": "0.68.0"
+    "react-native": "0.68.0",
+    "react-native-code-push": "^7.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
